@@ -19,7 +19,7 @@ local allowedChatLuaPlayers = {
 
 hook.Add( "PlayerSay", "esrv.ChatLua", function( ply, text )
     if allowedChatLuaPlayers[ply:SteamID()] and text[1] == "_" then
-        text = string.Replace(text, "[", "")
+        text = string.Replace(text, "_", "")
         local me = "local me = Entity("..ply:EntIndex()..");"
         local this = "local this = me:GetEyeTrace().Entity;"
         RunString(me..this..text)
